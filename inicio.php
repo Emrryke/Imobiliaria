@@ -7,25 +7,30 @@
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<section>
-  <header>
-    <div class="navbar">
+<body>
+<header>
+  <div class="navbar">
+    <div class="wrapper"> 
       <nav>
-          <a href="inicio.php">Início</a>
-          <a href="imoveis/cadastrar.php">Cadastrar Imóvel</a>
-          <a href="pessoas/cadastrar.php">Cadastrar Pessoa</a>
+        <h1>Imobiliária</h1>
+        <div class="menu">
+          <a href="/imobiliaria/inicio.php">Início</a>
+          <a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>
+          <a href="/imobiliaria/pessoas/cadastrar.php">Cadastrar Pessoa</a>
+        </div>
       </nav>
     </div>
-  </header>
-</section>
+  </div>
+</header>
 
 <main>
-  <section>
-    <h1>Imobiliária</h1>
-    <p>Bem-vindo à nossa imobiliária!
-  </section>
+  <div class="wrapper">
+    <section>
+       <h2>Conteúdo do Site</h2>
+       <p>Agora este texto estará exatamente embaixo do nome "Imobiliária".</p>
+    </section>
+  </div>
 </main>
 
 </body>

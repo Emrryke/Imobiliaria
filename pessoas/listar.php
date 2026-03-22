@@ -10,10 +10,25 @@ $result = $conn->query($sql);
 <head>
   <meta charset="UTF-8">
   <title>Lista de Pessoas</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
+<header>
+  <div class="navbar">
+    <div class="wrapper"> 
+      <nav>
+        <h1>Imobiliária</h1>
+        <div class="menu">
+          <a href="/imobiliaria/inicio.php">Início</a>
+          <a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>
+          <a href="/imobiliaria/pessoas/cadastrar.php">Cadastrar Pessoa</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
 <div class="container mt-4">
   <?php if(isset($_GET['msg'])): ?>
     <div class="alert alert-success">

@@ -4,31 +4,44 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .navbar {
+  width: 100%;
   background-color: rgb(39, 110, 151);
 }
 
 .navbar nav {
-  display: flex;             /* Coloca os links lado a lado */
-  justify-content: flex-end; /* Empurra para a direita */
-  gap: 15px;                 /* Espaço ente os links */
+  display: flex;
+  justify-content: space-between; /* H1 na esquerda, Menu na direita */
+  align-items: center;           /* Alinha verticalmente ao centro */
+  padding: 0 40px;               /* Um respiro nas pontas para não colarem na tela */
+  height: 80px;                  /* Altura fixa da barra */
+}
+
+.navbar h1 {
+  margin: 0;
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+}
+.menu {
+  display: flex;
+  gap: 25px;              /* Espaço ente os links */
 }
 
 .navbar a {
-  font-size: 20px;
-  font-family:Arial, Helvetica, sans-serif;
-  color: white;
+ color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 6px;
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  padding: 8px 12px;
   transition: 0.2s;
 }
 
 .navbar a:hover {
   background-color: rgb(255, 196, 0);
-  color: white;
   border-radius: 5px;
-  text-shadow: 2px 2px 4px rgb(0, 0, 0);
-  padding: 6px;
 }
