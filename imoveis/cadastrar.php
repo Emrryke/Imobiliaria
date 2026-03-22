@@ -29,9 +29,9 @@ Bairro:<br>
 Complemento:<br>
 <input type="text" name="complemento"><br><br>
 
-Proprietário:<br>
+Contribuinte:<br>
 <select name="pessoa_id" required>
-  <option value="">Selecione o proprietário</option>
+  <option value="">Selecione o contribuinte</option>
 
 <?php
 while($p = $pessoas->fetch_assoc()){

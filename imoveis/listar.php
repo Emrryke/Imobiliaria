@@ -38,7 +38,7 @@ $result = $conn->query($sql);
   <th>Número</th>
   <th>Bairro</th>
   <th>Complemento</th>
-  <th>Proprietário</th>
+  <th>Contribuinte</th>
   <th>Ações</th>
 </tr>
 

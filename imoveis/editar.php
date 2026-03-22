@@ -52,7 +52,7 @@ Bairro:<br>
 Complemento:<br>
 <input type="text" name="complemento" value="<?= $complemento ?>"><br><br>
 
-Proprietário:<br>
+Contribuinte:<br>
 <select name="pessoa_id" required>
 
 <?php while($p = $pessoas->fetch_assoc()): ?>
