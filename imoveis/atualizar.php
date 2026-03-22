@@ -29,7 +29,7 @@ $stmt->bind_param("ssssii",
 );
 
 if ($stmt->execute()) {
-    header("Location: listar.php?msg=sucesso");
+    header("Location: /imobiliaria/inicio.php?msg=sucesso");
     exit;
 } else {
     echo "Erro: " . $stmt->error;

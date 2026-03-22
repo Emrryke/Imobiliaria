@@ -42,6 +42,78 @@ body {
 }
 
 .navbar a:hover {
-  background-color: rgb(255, 196, 0);
+  background-color: #ccc;
   border-radius: 5px;
+}
+
+/*------------------------------------------------------------------------------*/
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.table th {
+  background-color: #276e97;
+  color: white;
+}
+
+.table td, .table th {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #ddd;
+}
+
+/*------------------------------------------------------------------------------*/
+
+/* Botão base */
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+/* Verde (Novo) */
+.btn-success {
+  background-color: #22c55e;
+}
+
+.btn-success:hover {
+  background-color: #16a34a;
+}
+
+/* Azul (Editar) */
+.btn-primary {
+  background-color: #3b82f6;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb;
+}
+
+/* Vermelho (Excluir) */
+.btn-danger {
+  background-color: #ef4444;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+/* Tamanho pequeno */
+.btn-sm {
+  padding: 5px 8px;
+  font-size: 14px;
 }

@@ -26,9 +26,16 @@
 
 <main>
   <div class="wrapper">
+    <br>
+
     <section>
-       <h2>Conteúdo do Site</h2>
-       <p>Agora este texto estará exatamente embaixo do nome "Imobiliária".</p>
+      <?php include 'imoveis/listar.php'; ?>
+    </section>
+
+    <br><br>
+
+    <section>
+      <?php include 'pessoas/listar.php'; ?>
     </section>
   </div>
 </main>
