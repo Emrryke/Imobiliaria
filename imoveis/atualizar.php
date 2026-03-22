@@ -1,7 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
+session_start();
 include("../conexao.php");
 
 $id = $_POST['id'];
@@ -9,29 +7,14 @@ $logradouro = $_POST['logradouro'];
 $numero = $_POST['numero'];
 $bairro = $_POST['bairro'];
 $complemento = $_POST['complemento'];
-$pessoa_id = $_POST['pessoa_id'];
+$usuario_id = $_POST['usuario_id'];
 
-$stmt = $conn->prepare("UPDATE imoveis SET 
-    logradouro=?, 
-    numero=?, 
-    bairro=?, 
-    complemento=?, 
-    pessoa_id=? 
-    WHERE id=?");
+$stmt = $conn->prepare("UPDATE imoveis SET logradouro=?, numero=?, bairro=?, complemento=?, usuario_id=? WHERE id=?");
+$stmt->bind_param("ssssii", $logradouro, $numero, $bairro, $complemento, $usuario_id, $id);
 
-$stmt->bind_param("ssssii",
-    $logradouro,
-    $numero,
-    $bairro,
-    $complemento,
-    $pessoa_id,
-    $id
-);
-
-if ($stmt->execute()) {
+if($stmt->execute()){
     header("Location: /imobiliaria/inicio.php?msg=sucesso");
     exit;
-} else {
+}else{
     echo "Erro: " . $stmt->error;
 }
-?>

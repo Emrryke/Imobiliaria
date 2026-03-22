@@ -1,6 +1,8 @@
 <?php
+session_start();
 include("../conexao.php");
-$pessoas = $conn->query("SELECT id, nome FROM pessoas");
+
+$usuarios = $conn->query("SELECT id, email FROM usuarios");
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +12,6 @@ $pessoas = $conn->query("SELECT id, nome FROM pessoas");
 <title>Cadastrar Imóvel</title>
 <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
 <header>
   <div class="navbar">
@@ -20,7 +21,7 @@ $pessoas = $conn->query("SELECT id, nome FROM pessoas");
         <div class="menu">
           <a href="/imobiliaria/inicio.php">Início</a>
           <a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>
-          <a href="/imobiliaria/pessoas/cadastrar.php">Cadastrar Pessoa</a>
+          <a href="/imobiliaria/usuarios/cadastrar.php">Cadastrar Usuário</a>
         </div>
       </nav>
     </div>
@@ -44,14 +45,12 @@ $pessoas = $conn->query("SELECT id, nome FROM pessoas");
         Complemento:<br>
         <input type="text" name="complemento"><br><br>
 
-        Contribuinte:<br>
-        <select name="pessoa_id" required>
-            <option value="">Selecione o contribuinte</option>
-          <?php
-            while($p = $pessoas->fetch_assoc()){
-              echo "<option value='".$p['id']."'>".$p['nome']."</option>";
-            }
-          ?>
+        Proprietário:<br>
+        <select name="usuario_id" required>
+            <option value="">Selecione o usuário</option>
+          <?php while($u = $usuarios->fetch_assoc()): ?>
+            <option value="<?= $u['id'] ?>"><?= htmlspecialchars($u['email']) ?></option>
+          <?php endwhile; ?>
         </select>
         <br><br>
         
