@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: /imobiliaria/login.php");
+    exit;
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +26,7 @@
           <a href="/imobiliaria/inicio.php">Início</a>
           <a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>
           <a href="/imobiliaria/pessoas/cadastrar.php">Cadastrar Pessoa</a>
+          <a href="/imobiliaria/logout.php">Sair</a>
         </div>
       </nav>
     </div>
@@ -29,13 +38,13 @@
     <br>
 
     <section>
-      <?php include 'imoveis/listar.php'; ?>
+      <?php include 'pessoas/listar.php'; ?>
     </section>
 
     <br><br>
 
     <section>
-      <?php include 'pessoas/listar.php'; ?>
+      <?php include 'imoveis/listar.php'; ?>
     </section>
   </div>
 </main>

@@ -37,11 +37,10 @@ $result = $conn->query($sql);
           <a href="/imobiliaria/pessoas/editar.php?id=<?= $row['id'] ?>" class="btn btn-primary btn-sm">Editar</a>
 
           <a href="/imobiliaria/pessoas/excluir.php?id=<?= $row['id'] ?>" 
-             class="btn btn-danger btn-sm"
-             onclick="return confirm('Tem certeza?')">
+             class="btn btn-danger btn-sm">
              Excluir
           </a>
-        </td>
+        </td> 
       </tr>
     <?php endwhile; ?>
   </table>
