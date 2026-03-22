@@ -1,14 +1,4 @@
-<?php
-session_start();
-include __DIR__ . '/../conexao.php';
-
-// Define tipo de usuário a criar
-$tipo = 'usuario'; // padrão
-if(isset($_GET['tipo']) && $_GET['tipo'] === 'admin' && isset($_SESSION['tipo']) && $_SESSION['tipo'] === 'admin'){
-    $tipo = 'admin';
-}
-?>
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -21,9 +11,8 @@ if(isset($_GET['tipo']) && $_GET['tipo'] === 'admin' && isset($_SESSION['tipo'])
 <div class="wrapper">
   <div class="container mt-4">
     <h2>Cadastrar Usuário</h2>
-    <form action="salvar.php" method="POST">
-      <input type="hidden" name="tipo" value="<?= $tipo ?>">
 
+    <form action="salvar.php" method="POST">
       Nome:<br>
       <input type="text" name="nome" required><br><br>
 
@@ -32,6 +21,21 @@ if(isset($_GET['tipo']) && $_GET['tipo'] === 'admin' && isset($_SESSION['tipo'])
 
       Senha:<br>
       <input type="password" name="senha" required><br><br>
+
+      Data de nascimento:<br>
+      <input type="date" name="data_nascimento"><br><br>
+
+      Telefone:<br>
+      <input type="text" name="telefone"><br><br>
+
+      <?php if(isset($_SESSION['tipo']) && $_SESSION['tipo'] === 'admin'): ?>
+        Tipo de usuário:<br>
+        <select name="tipo">
+          <option value="usuario">Usuário</option>
+          <option value="admin">Administrador</option>
+        </select>
+        <br><br>
+      <?php endif; ?>
 
       <button type="submit">Cadastrar</button>
     </form>
