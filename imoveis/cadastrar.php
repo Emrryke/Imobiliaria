@@ -27,40 +27,38 @@ $pessoas = $conn->query("SELECT id, nome FROM pessoas");
   </div>
 </header>
 
-<div class="container mt-4">
-<h2 class="mb-4">Cadastrar Imóvel</h2>
+<main>
+  <div class="wrapper">
+    <div class="container mt-4">
+      <h2 class="mb-4">Cadastrar Imóvel</h2>
+      <form action="salvar.php" method="POST">
+        Logradouro:<br>
+        <input type="text" name="logradouro" required><br><br>
 
-<form action="salvar.php" method="POST">
+        Número:<br>
+        <input type="text" name="numero" required><br><br>
 
-Logradouro:<br>
-<input type="text" name="logradouro" required><br><br>
+        Bairro:<br>
+        <input type="text" name="bairro" required><br><br>
 
-Número:<br>
-<input type="text" name="numero" required><br><br>
+        Complemento:<br>
+        <input type="text" name="complemento"><br><br>
 
-Bairro:<br>
-<input type="text" name="bairro" required><br><br>
-
-Complemento:<br>
-<input type="text" name="complemento"><br><br>
-
-Contribuinte:<br>
-<select name="pessoa_id" required>
-  <option value="">Selecione o contribuinte</option>
-
-<?php
-while($p = $pessoas->fetch_assoc()){
-    echo "<option value='".$p['id']."'>".$p['nome']."</option>";
-}
-?>
-
-</select>
-
-<br><br>
-
-<button type="submit">Cadastrar Imóvel</button>
-
-</form>
-</div>
+        Contribuinte:<br>
+        <select name="pessoa_id" required>
+            <option value="">Selecione o contribuinte</option>
+          <?php
+            while($p = $pessoas->fetch_assoc()){
+              echo "<option value='".$p['id']."'>".$p['nome']."</option>";
+            }
+          ?>
+        </select>
+        <br><br>
+        
+        <button type="submit">Cadastrar Imóvel</button>
+      </form>
+    </div>
+  </div>
+</main>
 </body>
 </html>

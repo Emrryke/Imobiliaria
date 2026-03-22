@@ -23,37 +23,40 @@
   </div>
 </header>
 
-<div class="container mt-4">
-  <h2 class="mb-4">Cadastrar Pessoa</h2>
+<main>
+  <div class="wrapper">
+    <div class="container mt-4">
+      <h2 class="mb-4">Cadastrar Pessoa</h2>
 
-  <form action="salvar.php" method="POST">
+      <form action="salvar.php" method="POST">
+        Nome:<br>
+        <input type="text" name="nome" required><br><br>
 
-    Nome:<br>
-    <input type="text" name="nome" required><br><br>
+        Data de nascimento:<br>
+        <input type="date" name="data_nascimento" required><br><br>
 
-    Data de nascimento:<br>
-    <input type="date" name="data_nascimento" required><br><br>
+        CPF:<br>
+        <input type="text" name="cpf" required><br><br>
 
-    CPF:<br>
-    <input type="text" name="cpf" required><br><br>
+        Sexo:<br>
 
-    Sexo:<br>
-    <select name="sexo" required>
-      <option value="">Selecione</option>
-      <option value="Masculino">Masculino</option>
-      <option value="Feminino">Feminino</option>
-    </select>
-    <br><br>
+        <select name="sexo" required>
+          <option value="">Selecione</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+        </select>
+        <br><br>
 
-    Telefone:<br>
-    <input type="text" name="telefone"><br><br>
+        Telefone:<br>
+        <input type="text" name="telefone"><br><br>
 
-    Email:<br>
-    <input type="email" name="email"><br><br>
-
-    <button type="submit">Cadastrar</button>
-
-  </form>
-</div>
+        Email:<br>
+        <input type="email" name="email"><br><br>
+        
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</main>
 </body>
 </html>

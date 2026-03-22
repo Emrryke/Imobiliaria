@@ -48,41 +48,40 @@ $pessoas = $conn->query("SELECT id, nome FROM pessoas");
   </div>
 </header>
 
-<div class="container mt-4">
-<h2 class="mb-4">Editar Imóvel</h2>
 
-<form action="atualizar.php" method="POST">
+<main>
+  <div class="wrapper"> 
+    <div class="container mt-4">
+      <h2 class="mb-4">Editar Imóvel</h2>
 
-<input type="hidden" name="id" value="<?= $id_db ?>">
+      <form action="atualizar.php" method="POST">
+        <input type="hidden" name="id" value="<?= $id_db ?>">
+        Logradouro:<br>
+        <input type="text" name="logradouro" value="<?= $logradouro ?>" required><br><br>
 
-Logradouro:<br>
-<input type="text" name="logradouro" value="<?= $logradouro ?>" required><br><br>
+        Número:<br>
+        <input type="text" name="numero" value="<?= $numero ?>" required><br><br>
 
-Número:<br>
-<input type="text" name="numero" value="<?= $numero ?>" required><br><br>
+        Bairro:<br>
+        <input type="text" name="bairro" value="<?= $bairro ?>" required><br><br>
 
-Bairro:<br>
-<input type="text" name="bairro" value="<?= $bairro ?>" required><br><br>
+        Complemento:<br>
+        <input type="text" name="complemento" value="<?= $complemento ?>"><br><br>
 
-Complemento:<br>
-<input type="text" name="complemento" value="<?= $complemento ?>"><br><br>
+        Contribuinte:<br>
+        <select name="pessoa_id" required>
+          <?php while($p = $pessoas->fetch_assoc()): ?>
+            <option value="<?= $p['id'] ?>" <?= ($p['id'] == $pessoa_id) ? 'selected' : '' ?>>
+              <?= $p['nome'] ?>
+            </option>
+          <?php endwhile; ?>
+        </select>
+        <br><br>
 
-Contribuinte:<br>
-<select name="pessoa_id" required>
-
-<?php while($p = $pessoas->fetch_assoc()): ?>
-  <option value="<?= $p['id'] ?>" <?= ($p['id'] == $pessoa_id) ? 'selected' : '' ?>>
-    <?= $p['nome'] ?>
-  </option>
-<?php endwhile; ?>
-
-</select>
-
-<br><br>
-
-<button type="submit">Atualizar</button>
-
-</form>
-</div>
+        <button type="submit">Atualizar</button>
+      </form>
+    </div>
+  </div>
+</main>
 </body>
 </html>

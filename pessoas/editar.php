@@ -32,38 +32,40 @@ $row = $result->fetch_assoc();
   </div>
 </header>
 
-<div class="container mt-4">
-  <h2 class="mb-4">Editar Pessoa</h2>
+<main>
+  <div class="wrapper">
+    <div class="container mt-4">
+      <h2 class="mb-4">Editar Pessoa</h2>
 
-  <form action="atualizar.php" method="POST">
+      <form action="atualizar.php" method="POST">
+        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
-    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+        Nome:<br>
+        <input type="text" name="nome" value="<?php echo $row['nome']; ?>" required><br><br>
 
-    Nome:<br>
-    <input type="text" name="nome" value="<?php echo $row['nome']; ?>" required><br><br>
+        Data de nascimento:<br>
+        <input type="date" name="data_nascimento" value="<?php echo $row['data_nascimento']; ?>" required><br><br>
 
-    Data de nascimento:<br>
-    <input type="date" name="data_nascimento" value="<?php echo $row['data_nascimento']; ?>" required><br><br>
+        CPF:<br>
+        <input type="text" name="cpf" value="<?php echo $row['cpf']; ?>" required><br><br>
 
-    CPF:<br>
-    <input type="text" name="cpf" value="<?php echo $row['cpf']; ?>" required><br><br>
+        Sexo:<br>
+        <select name="sexo" required>
+          <option value="Masculino" <?php if($row['sexo']=="Masculino") echo "selected"; ?>>Masculino</option>
+          <option value="Feminino" <?php if($row['sexo']=="Feminino") echo "selected"; ?>>Feminino</option>
+        </select>
+        <br><br>
 
-    Sexo:<br>
-    <select name="sexo" required>
-      <option value="Masculino" <?php if($row['sexo']=="Masculino") echo "selected"; ?>>Masculino</option>
-      <option value="Feminino" <?php if($row['sexo']=="Feminino") echo "selected"; ?>>Feminino</option>
-    </select>
-    <br><br>
+        Telefone:<br>
+        <input type="text" name="telefone" value="<?php echo $row['telefone']; ?>"><br><br>
 
-    Telefone:<br>
-    <input type="text" name="telefone" value="<?php echo $row['telefone']; ?>"><br><br>
+        Email:<br>
+        <input type="email" name="email" value="<?php echo $row['email']; ?>"><br><br>
 
-    Email:<br>
-    <input type="email" name="email" value="<?php echo $row['email']; ?>"><br><br>
-
-    <button type="submit">Atualizar</button>
-
-  </form>
-</div>
+        <button type="submit">Atualizar</button>
+      </form>
+    </div>
+  </div>
+</main>
 </body>
 </html>
