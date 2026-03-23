@@ -20,11 +20,13 @@
       <input type="email" name="email" placeholder="Email" required><br><br>
       <input type="password" name="senha" placeholder="Senha" required><br><br>
       <button class="btn btn-primary">Entrar</button>
+      <button type="button" class="btn btn-primary" 
+        onclick="window.location.href='/imobiliaria/usuarios/cadastrar.php?tipo=usuario'">
+        Criar Conta
+      </button>
+
     </form>
 
-    <p>Não tem conta? 
-      <a href="/imobiliaria/usuarios/cadastrar.php?tipo=usuario">Crie uma aqui</a>
-    </p>
   </div>
 </div>
 

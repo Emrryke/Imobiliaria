@@ -2,35 +2,56 @@
 session_start();
 include __DIR__ . '/../conexao.php';
 
-$nome = $_POST['nome'];
-$email = $_POST['email'];
-$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+// Campos obrigatórios
+$nome = trim($_POST['nome']);
+$cpf = trim($_POST['cpf']);
+$sexo = $_POST['sexo'];
+$data_nascimento = $_POST['data_nascimento'];
+$email = trim($_POST['email']);
+$senha = $_POST['senha'];
 
-// Campos adicionais opcionais
-$data_nascimento = !empty($_POST['data_nascimento']) ? $_POST['data_nascimento'] : null;
-$telefone = !empty($_POST['telefone']) ? $_POST['telefone'] : null;
+// Campos opcionais
+$telefone = !empty($_POST['telefone']) ? trim($_POST['telefone']) : null;
 
-// Tipo vem do form, mas só admin logado pode criar outro admin
+// Tipo de usuário: só admin logado pode criar outro admin
 $tipo = 'usuario';
 if(isset($_POST['tipo']) && $_POST['tipo'] === 'admin' && isset($_SESSION['tipo']) && $_SESSION['tipo'] === 'admin'){
     $tipo = 'admin';
 }
 
-// Ajuste na query para incluir os novos campos
-$stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha, tipo, data_nascimento, telefone) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", 
+// Validação dos campos obrigatórios
+if(empty($nome) || empty($cpf) || empty($sexo) || empty($data_nascimento) || empty($email) || empty($senha)){
+    $_SESSION['erro'] = "Preencha todos os campos obrigatórios!";
+    header("Location: /imobiliaria/usuarios/cadastrar_usuario.php");
+    exit;
+}
+
+// Hash da senha
+$senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+// Prepared statement
+$stmt = $conn->prepare("INSERT INTO usuarios (nome, cpf, sexo, data_nascimento, email, senha, telefone, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", 
     $nome,
-    $email,
-    $senha,
-    $tipo,
+    $cpf,
+    $sexo,
     $data_nascimento,
-    $telefone
+    $email,
+    $senha_hash,
+    $telefone,
+    $tipo
 );
 
 if ($stmt->execute()) {
+    $_SESSION['sucesso'] = "Usuário cadastrado com sucesso!";
     header("Location: /imobiliaria/inicio.php?msg=sucesso");
     exit;
 } else {
-    echo "Erro: " . $stmt->error;
+    $_SESSION['erro'] = "Erro ao cadastrar usuário: " . $stmt->error;
+    header("Location: /imobiliaria/usuarios/cadastrar_usuario.php");
+    exit;
 }
+
+$stmt->close();
+$conn->close();
 ?>

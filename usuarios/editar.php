@@ -29,6 +29,21 @@ if (!$user) {
   <link rel="stylesheet" href="/imobiliaria/style.css">
 </head>
 <body>
+<header>
+  <div class="navbar">
+    <div class="wrapper">
+      <nav>
+        <h1>Imobiliária</h1>
+        <div class="menu">
+          <a href="/imobiliaria/inicio.php">Início</a>
+          <a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>
+          <a href="/imobiliaria/usuarios/cadastrar.php">Cadastrar Usuário</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
 <div class="wrapper">
   <div class="container mt-4">
     <h2>Editar Usuário</h2>
@@ -70,6 +85,7 @@ if (!$user) {
       <br><br>
 
       <button type="submit">Atualizar</button>
+      <button type="button" onclick="window.location.href='/imobiliaria/inicio.php'">Cancelar</button>
     </form>
   </div>
 </div>

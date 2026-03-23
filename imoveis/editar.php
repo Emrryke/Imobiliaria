@@ -65,6 +65,7 @@ $usuarios = $conn->query("SELECT id, email FROM usuarios");
     </select><br><br>
 
     <button type="submit">Atualizar</button>
+    <button type="button" onclick="window.location.href='/imobiliaria/inicio.php'">Cancelar</button>
   </form>
 </div>
 </div>
