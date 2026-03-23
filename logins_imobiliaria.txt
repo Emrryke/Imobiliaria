@@ -1,0 +1,13 @@
+﻿PROJETO IMOBILIÁRIA - LOGINS DE TESTE
+
+1. Admin
+   Nome: Admin
+   Email: admin@admin.com
+   Senha: 123456
+   Tipo: admin
+
+2. Usuário Comum
+   Nome: usuario
+   Email: user@user.com
+   Senha: 123456
+   Tipo: usuario
