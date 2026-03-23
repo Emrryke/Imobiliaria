@@ -28,6 +28,13 @@ body {
   font-size: 28px;
 }
 
+.navbar-user {
+    font-size: 20px;       /* igual ao H1 */
+    font-weight: bold;
+    color: white;          /* mesma cor do H1 */
+    margin-left: auto;     /* empurra para a direita */
+}
+
 .menu {
   display: flex;
   gap: 25px;

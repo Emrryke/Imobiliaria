@@ -1,8 +1,17 @@
 <?php
 session_start();
-if (!isset($_SESSION['usuario'])) {
-    header("Location: /imobiliaria/auth/login.php");
-    exit;
+include __DIR__ . '/conexao.php';
+
+if(isset($_SESSION['id'])) {
+    $id_usuario = $_SESSION['id'];
+    $resultado = $conn->prepare("SELECT nome FROM usuarios WHERE id = ?");
+    $resultado->bind_param("i", $id_usuario);
+    $resultado->execute();
+    $res = $resultado->get_result();
+    $usuario = $res->fetch_assoc();
+    $nome_usuario = $usuario['nome'];
+} else {
+    $nome_usuario = null;
 }
 ?>
 
@@ -18,16 +27,27 @@ if (!isset($_SESSION['usuario'])) {
 <body>
 <header>
   <div class="navbar">
-    <div class="wrapper"> 
-      <nav>
+    <div class="wrapper">
+      <nav style="display: flex; align-items: center; justify-content: space-between;">
         <h1>Imobiliária</h1>
-        <div class="menu">
+
+        <div style="display: flex; align-items: center; gap: 15px;">
           <a href="/imobiliaria/inicio.php">Início</a>
-          <a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>
-          <?php if($_SESSION['tipo'] === 'admin'): ?>
-            <a href="/imobiliaria/usuarios/cadastrar.php">Cadastrar Usuário</a>
-          <?php endif; ?>
-          <a href="/imobiliaria/auth/logout.php">Sair</a>
+
+          <?php 
+          if(isset($_SESSION['id'])) {
+              echo '<a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>';
+              echo '<a href="/imobiliaria/usuarios/cadastrar.php">Cadastrar Usuário</a>';
+
+              $id_usuario = $_SESSION['id'];
+              $resultado = $conn->prepare("SELECT nome FROM usuarios WHERE id = ?");
+              $resultado->bind_param("i", $id_usuario);
+              $resultado->execute();
+              $res = $resultado->get_result();
+              $usuario = $res->fetch_assoc();
+              echo '<span class="navbar-user">Bem-vindo, ' . htmlspecialchars($usuario['nome']) . '</span>';
+          }
+          ?>
         </div>
       </nav>
     </div>
