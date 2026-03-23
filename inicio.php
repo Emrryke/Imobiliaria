@@ -29,24 +29,30 @@ if(isset($_SESSION['id'])) {
   <div class="navbar">
     <div class="wrapper">
       <nav style="display: flex; align-items: center; justify-content: space-between;">
+        <!-- H1 à esquerda -->
         <h1>Imobiliária</h1>
-
-        <div style="display: flex; align-items: center; gap: 15px;">
+        <?php 
+          // Nome do usuário como item da navbar
+          $id_usuario = $_SESSION['id'];
+          $resultado = $conn->prepare("SELECT nome FROM usuarios WHERE id = ?");
+          $resultado->bind_param("i", $id_usuario);
+          $resultado->execute();
+          $res = $resultado->get_result();
+          $usuario = $res->fetch_assoc();
+          echo '<h2>Bem-vindo, ' . htmlspecialchars($usuario['nome']) . '</h2>';
+        ?>
+        <!-- Área da direita -->
+        <div class="menu">
           <a href="/imobiliaria/inicio.php">Início</a>
 
           <?php 
           if(isset($_SESSION['id'])) {
               echo '<a href="/imobiliaria/imoveis/cadastrar.php">Cadastrar Imóvel</a>';
               echo '<a href="/imobiliaria/usuarios/cadastrar.php">Cadastrar Usuário</a>';
-
-              $id_usuario = $_SESSION['id'];
-              $resultado = $conn->prepare("SELECT nome FROM usuarios WHERE id = ?");
-              $resultado->bind_param("i", $id_usuario);
-              $resultado->execute();
-              $res = $resultado->get_result();
-              $usuario = $res->fetch_assoc();
-              echo '<span class="navbar-user">Bem-vindo, ' . htmlspecialchars($usuario['nome']) . '</span>';
           }
+
+          // Botão de sair
+              echo '<a href="/imobiliaria/auth/logout.php" class="btn-logout">Sair</a>';
           ?>
         </div>
       </nav>

@@ -28,6 +28,12 @@ body {
   font-size: 28px;
 }
 
+.navbar h2 {
+  margin: 0;
+  color: white;
+  font-size: 22px;
+}
+
 .navbar-user {
     font-size: 20px;       /* igual ao H1 */
     font-weight: bold;
